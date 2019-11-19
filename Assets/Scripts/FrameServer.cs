@@ -8,7 +8,7 @@ using UnityEngine.Assertions;
 
 namespace FrameServer {
 public class FrameServer {
-    private int _port = 7788;
+    private int _port = 5556;
     private PublisherSocket _server;
 
     public FrameServer() {
