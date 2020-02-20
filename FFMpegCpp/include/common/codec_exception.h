@@ -10,8 +10,8 @@ struct CodecException : public std::runtime_error {
       : std::runtime_error(msg), err_code(code)
   {} 
   
-  const char* what () const noexcept override {
-    std::runtime_error::what();
+  const char* what() const noexcept override {
+    return std::runtime_error::what();
   }
 
   int ErrorCode() const noexcept { 

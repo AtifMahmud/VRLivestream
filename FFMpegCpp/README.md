@@ -17,3 +17,15 @@ To build the project (on Linux, Windows instructions in progress):
 
 1. Open a terminal 
 
+## Build Instructions WINDOWS
+Install "Tools for Visual Studio": https://visualstudio.microsoft.com/downloads/
+Install CMake. Make sure it is in the Path environment variable so you can 
+access it via the command line.
+
+1. Open "Developer Prompt for VS 2019" or whatever year you got
+2. CD to the project folder and run
+```mkdir build```  
+```cd build```  
+```cmake ..```  
+```msbuild codec.sln /p:Configuration=Release```  
+3. Build outputs are in the build/Release folder.

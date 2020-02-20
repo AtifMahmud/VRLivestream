@@ -4,11 +4,7 @@ using System;
 using FS;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using Codec;
-using Codec.Decoder;
 using Codec.Encoder;
-using FFmpeg;
-using FFmpeg.AutoGen;
 
 [RequireComponent(typeof(Camera))]
 public class Test360Camera : MonoBehaviour
@@ -21,8 +17,7 @@ public class Test360Camera : MonoBehaviour
     private Texture2D display_texture_;
     private Queue<AsyncGPUReadbackRequest> async_requests_ = new Queue<AsyncGPUReadbackRequest>();
     private int max_requests_ = 10;
-    private FrameEncoder encoder_;
-    private FrameDecoder decoder_;
+    private FrameEncoderWrapper encoder_;
     private FrameServer frameserver_;
 
     void Start()
@@ -33,18 +28,9 @@ public class Test360Camera : MonoBehaviour
         cubemap_left_.dimension = TextureDimension.Cube;
         equirect_ = new RenderTexture(DIM, DIM, 24, RenderTextureFormat.ARGB32);
         display_texture_ = new Texture2D(DIM, DIM, TextureFormat.RGBA32, false);
-        try {
-            encoder_  = new FrameEncoder(FRAMERATE, DIM, DIM);
-            decoder_  = new FrameDecoder();
-        } catch (FFMpegException e) {
-            Debug.LogError(
-                    "Could not construct video encoder or decoder: " + 
-                    e.Message + 
-                    " - FFMpeg error code: " 
-                    + e.ErrCode());
-        } 
-        catch (CodecException e) {
-            Debug.LogError("Could not construct video encoder or decoder: " + e.Message);
+        encoder_  = new FrameEncoderWrapper(FRAMERATE, DIM, DIM);
+        if (encoder_ == null) {
+            Debug.Log("ERROR failed to create encoder");
         }
     }
 
@@ -61,32 +47,17 @@ public class Test360Camera : MonoBehaviour
             }
             if (req.done) {
                 var img = req.GetData<byte>();
-                try {
-                    List<Packet> packets = encoder_.EncodeFrame(img.ToArray());
+                    List<byte[]> packets = encoder_.EncodeFrame(img.ToArray());
 
                     foreach(var packet in packets) {
-                        SendPacket(packet);
+                        frameserver_.SendFrame(packet);
                     }
-                } catch (Codec.FFMpegException e) {
-                    Debug.LogError(
-                            "Caught error during encoding/decoding process: " + e.Message +
-                            "\nError code: " + e.ErrCode());
-                } catch (Codec.CodecException e) {
-                    Debug.LogError(
-                            "Caught error during encoding/decoding process: " + e.Message);
-                }
                 async_requests_.Dequeue();
             }
             else {
                 break;
             }
         }
-    }
-
-    unsafe void SendPacket(Packet packet) {
-        byte[] arr = packet.GetRawPacketData();
-
-        frameserver_.SendFrame(arr);
     }
 
     void LateUpdate() {

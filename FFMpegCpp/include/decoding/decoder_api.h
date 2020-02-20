@@ -2,8 +2,11 @@
 
 #include "decoding/frame_decoder.h"
 
+#ifdef _WIN32
+#define EXPORT __declspec(dllexport)
+#else
 #define EXPORT __attribute__((visibility("default")))
-// use __declspec(dllexport) for windows
+#endif
 
 extern "C" {
 
