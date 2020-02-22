@@ -1,22 +1,26 @@
+/**
+ * @file encoder_frame.cpp
+ * @brief Implementation of the EncoderFrame class
+ */
+
 #include "encoding/encoder_frame.h"
 
+#include <stdexcept>
+
 #include "common/codec_exception.h"
-#include "common/error_codes.h"
 
 namespace codec {
 namespace encoder {
 
 EncoderFrame::EncoderFrame(
-    const AVPixelFormat pixel_format, 
-    const int width, 
+    const AVPixelFormat pixel_format,
+    const int width,
     const int height)
     : pixel_format_(pixel_format)
 {
   frame_ = av_frame_alloc();
   if (!frame_)
-    throw CodecException(
-        ErrorCode::FAILED_ALLOC,
-        "Cannot allocate memory for encoder frame");
+    throw std::runtime_error("Cannot allocate memory for encoder frame");
 
   frame_->format = pixel_format;
   frame_->width = width;
@@ -25,8 +29,8 @@ EncoderFrame::EncoderFrame(
   int success = av_frame_get_buffer(frame_, 0);
   if (success < 0)
     throw CodecException(
-        ErrorCode::FAILED_ALLOC, 
-        "Cannot allocate memory for frame data");    
+        success,
+        "Cannot allocate memory for frame data");
 }
 
 EncoderFrame::~EncoderFrame()

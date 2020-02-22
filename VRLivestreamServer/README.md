@@ -1,29 +1,35 @@
 # VRLivestreamServer
 
-This project runs the server side application. Note that the server is only 
-compatible with Windows at this time. In the future, the video-encoding code
-may be migrated away from using FFMpeg.Autogen so that it is cross-platform
+This project runs the a test scene as the server-side applicatoin.
+Note that the server is only compatible with Windows at this time.
+
+It Accepts TCP requests from clients to connect to an RTP stream.
+
+## System Requirements
+
+The minimum specs for the machine running the the server project is of course
+dependent on the complexity of the Unity application that it is integrated with.
+However, the extraction of the 360 video frames is quite intensive on the GPU.
+A machine with a high quaility GPU is therefore recommended.
 
 ## Setup
 
-### NuGet Packages
+There should be no required setup to run this test app.
+However, the server-side code does depend on the dll that is created using
+the FFMpegCpp project. The dll from this project is already placed
+under \Plugins\x86_64\librtpserver.dll.
 
-1. Navigate to the [Nuget Packet Manager Github Page](https://github.com/GlitchEnzo/NuGetForUnity)
-1. Go to the releases page.
-1. Download the _.unitypackage_ of the latest release, which is 2.0.0 at the time of writing.
-1. To install in Unity, Go to Assets->ImportPackets->CustomPackage... and then find the downloaded UnityPackage
-1. Note: You may have to restart Unity after the installation to use the package.
-1. Click on "NuGet->Manage Nuget Packages" from the top bar and check your installed packages.
-   Assuming you have just installed NuGet, you should have no installed packages.
-   If you have already installed some packages, take note of what packages you have installed
-   Then, install the following packages:
-  1. AsyncIO
-  1. NetMQ
-1. Go back to installed packages. The NetMQ package sometimes installs other uneeded
-   packages along side it that can cause build errors. Uninstall these so that 
-   the three installed packages are left. (Keep any packages that you had prior to installed
-   prior as well)
+However, if you change the FFMpeg server implementation, you will need
+to navigate to and delete the current dll and replace it with the new dll. Note
+that the dll must be named exactly librtpserver.dll for Unity to find it.
+If the Unity project is running while you do this, you will likely have to restart
+the application for it to take effect.
+
+## Integration into other Unity Applications
+
+TODO
 
 ## Other Notes:
 
-Make sure to disable Windows Firewall before running the server
+If the server does not appear to be running, you might want to disable your computer's firewall
+and try again

@@ -1,3 +1,8 @@
+/**
+ * @file encoder_context.cpp
+ * @brief Implementation of the EncoderContext class
+ */
+
 #include "encoding/encoder_context.h"
 
 extern "C" {
@@ -5,27 +10,24 @@ extern "C" {
 #include <libavformat/avformat.h>
 }
 
+#include <stdexcept>
+
 #include "common/codec_exception.h"
-#include "common/error_codes.h"
 
 namespace codec {
 namespace encoder {
 
 EncoderContext::EncoderContext(const int fps, const int width, const int height)
 {
-  av_register_all();
   AVCodecID codec_id = AVCodecID::AV_CODEC_ID_H264;
   codec_ptr_ = avcodec_find_encoder(codec_id);
-  if (!codec_ptr_) 
-    throw CodecException(
-        ErrorCode::GENERIC_CODEC_EXCEPTION, "Encoder codec not found");
+  if (!codec_ptr_)
+    throw std::runtime_error("Encoder codec not found");
 
   codec_context_ptr_ = avcodec_alloc_context3(codec_ptr_);
-  if (!codec_context_ptr_) {
-    throw CodecException(
-        ErrorCode::FAILED_ALLOC, "Could not allocate codec context");
-  }
-  
+  if (!codec_context_ptr_)
+    throw std::runtime_error("Could not allocate codec context");
+
   codec_context_ptr_->width = width;
   codec_context_ptr_->height = height;
   codec_context_ptr_->time_base = AVRational {1, fps};
