@@ -6,17 +6,7 @@ When you run the project, you input the ip address of the computer running
 the server-side, and then this project will attempt to connect to the RTP stream
 of the server.
 
-<<<<<<< HEAD
-This project depends on NetMQ and AsyncIO which are NuGet packages. See the
-VRLivestreamServer READMe for instructions for how to install NuGet and these
-pacakges. DO _NOT_ install FFmpeg.Autogen in this project - it is not needed
-MAKE SURE TO UNINSTALL ALL OTHER WEIRD PACKAGES THAT GET INSTALLED.
-You should only have NetMQ and AsyncIO, nothing else.
-
-## Build Instructions
-=======
 ## Build Instructions For Android
->>>>>>> 15cde6d... Switch From NetMQ to RTP
 
 You will need to have the Android SDK installed. There are two options for this:
 
