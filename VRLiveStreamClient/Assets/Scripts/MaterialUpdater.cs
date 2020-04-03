@@ -41,6 +41,9 @@ public class MaterialUpdater : MonoBehaviour
                 SceneManager.LoadScene("ClientMain");
             }
         }
+
+        // Mirror X axis so that it's the CORRECT way
+        m.mainTextureScale = new Vector2(-1, 1);
     }
 
     /// <summary>
