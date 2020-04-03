@@ -19,22 +19,10 @@ may be migrated away from using FFMpeg.Autogen so that it is cross-platform
    Then, install the following packages:
   1. AsyncIO
   1. NetMQ
-  1. FFMpeg.Autogen
 1. Go back to installed packages. The NetMQ package sometimes installs other uneeded
    packages along side it that can cause build errors. Uninstall these so that 
    the three installed packages are left. (Keep any packages that you had prior to installed
    prior as well)
-
-### FFMpeg Setup
-
-The FFMpeg.Autgen library requires the ffmpeg Dlls for windows. 
-Follow these steps:
-
-1. Get the ffmpeg dlls for windows
-    - Download the dll files from [here](https://ffmpeg.zeranoe.com/builds/)
-    - Use the latest release build, your architecture, and the shared-linking version
-    - Unzip the download, and copy the dlls in the "bin" folder into a new folder in the project called Assets\FFmpeg\bin\
-    - The folder __must__ be named exactly this for now
 
 ## Other Notes:
 

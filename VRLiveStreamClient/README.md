@@ -7,6 +7,8 @@ This Project is for building the client side application for Android.
 This project depends on NetMQ and AsyncIO which are NuGet packages. See the 
 VRLivestreamServer READMe for instructions for how to install NuGet and these
 pacakges. DO _NOT_ install FFmpeg.Autogen in this project - it is not needed
+MAKE SURE TO UNINSTALL ALL OTHER WEIRD PACKAGES THAT GET INSTALLED.
+You should only have NetMQ and AsyncIO, nothing else.
 
 ## Build Instructions
 
