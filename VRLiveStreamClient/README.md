@@ -63,6 +63,10 @@ or the new version will not install.
 There are no extra build steps for Windows. You should be able to build an
 executable without changing any setings.
 
+## Toggling debug info
+To see fps printed in the top left hand corner, uncomment the ```#define DEBUG``` statement in
+FpsDebugInfo.cs
+
 ## Other Notes
 
 The rtp streaming of the video is using ffmpeg shared-object files that are in the

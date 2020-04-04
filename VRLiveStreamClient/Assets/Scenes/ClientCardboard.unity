@@ -161,7 +161,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 498412, guid: 970dd4b9371394fb4890965f608d46fd, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 498412, guid: 970dd4b9371394fb4890965f608d46fd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -464,7 +464,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d6e4f9a532bdc54783934d44811d63c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stereoSeparation: 0.064
   m: {fileID: 2100000, guid: b0df260ee0991da4abc1911c31800288, type: 2}
 --- !u!1 &2129062932
 GameObject:
@@ -477,6 +476,8 @@ GameObject:
   - component: {fileID: 2129062933}
   - component: {fileID: 2129062935}
   - component: {fileID: 2129062934}
+  - component: {fileID: 2129062937}
+  - component: {fileID: 2129062936}
   m_Layer: 0
   m_Name: MainCamera
   m_TagString: Untagged
@@ -484,8 +485,8 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2129062933
-Transform:
+--- !u!224 &2129062933
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -499,6 +500,11 @@ Transform:
   m_Father: {fileID: 1987293152}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!81 &2129062934
 AudioListener:
   m_ObjectHideFlags: 0
@@ -550,3 +556,24 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &2129062936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2129062932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b57201f4357021f40b05850398576099, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fps_text: 
+--- !u!222 &2129062937
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2129062932}
+  m_CullTransparentMesh: 0
