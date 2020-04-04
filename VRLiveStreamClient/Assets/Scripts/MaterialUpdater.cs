@@ -53,6 +53,7 @@ public class MaterialUpdater : MonoBehaviour
     {
         byte[] frame = rtp_client_.GetNewFrame();
         if (frame != null) {
+            FpsDebug.FpsDebugInfo.RtpFpsUpdate();
             display_texture_.LoadRawTextureData(frame);
             display_texture_.Apply();
             m.SetTexture("_MainTex", display_texture_);
