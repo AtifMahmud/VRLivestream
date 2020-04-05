@@ -8,7 +8,7 @@ namespace Server {
 /// <summary>
 /// Wrapper class around the C++ RTP streaming code
 /// </summary>
-public unsafe class RTPServerWrapper {
+public class RTPServerWrapper {
     private IntPtr rtp_server_ = IntPtr.Zero;
 
     private const int SDP_OUT_SIZE = 1000;
