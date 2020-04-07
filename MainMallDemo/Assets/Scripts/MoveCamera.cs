@@ -11,7 +11,7 @@ using UnityEngine;
 /// </summary>
 public class MoveCamera : MonoBehaviour
 {
-    float flySpeed = .1f;
+    public float flySpeed = .1f;
 
     /// <summary>
     /// Listen for keyboard input on every frame and move the attached object
