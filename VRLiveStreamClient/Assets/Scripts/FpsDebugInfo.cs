@@ -1,6 +1,6 @@
 ﻿// By default, the debug info is turned OFF, and public function RtpFpsUpdate
 // will do nothing. uncomment the flag below to turn on the debugging.
-#define FPS_DEBUG
+//#define FPS_DEBUG
 
 using UnityEngine;
 using UnityEngine.UI;
