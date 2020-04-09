@@ -25,9 +25,22 @@ that the dll must be named exactly librtpserver.dll for Unity to find it.
 If the Unity project is running while you do this, you will likely have to restart
 the application for it to take effect.
 
-## Integration into other Unity Applications
+## Creating a unitypackage
 
-TODO
+By creating a unitypackage, the streaming functionality can be easily integrated into other projects:
+
+1. Select Assets->Export Package
+1. Select plugins/x64_64
+1. Select Scripts/LiveStream
+1. Click the "export" button and choose a location to export to
+
+## Using a unitypackage in a new project
+
+To use the unitypackage and start livestreaming in a new project:
+
+1. Select Assets->Import Package
+2. Select the unitypackage created in the previous step
+3. Attach the scripts ClientCamera.cs and ManualUIRenderer.cs to the camera you want to stream from
 
 ## Other Notes:
 
