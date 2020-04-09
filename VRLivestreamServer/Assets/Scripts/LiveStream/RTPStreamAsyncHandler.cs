@@ -19,9 +19,11 @@ public class RTPStreamAsyncHandler {
     /// <param name="framerate">The desired framerate of the stream</param>
     /// <param name="width">The width of each image frame, in pixels</param>
     /// <param name="height">The height of each image frame, in pixels</param>
-    public RTPStreamAsyncHandler(int framerate, int width, int height)
+    /// <param name="codec_speed">slower speeds give better compression. more info at https://trac.ffmpeg.org/wiki/Encode/H.264</param>
+    /// <param name="codec_type">0 for H264, 1 for H265</param>
+    public RTPStreamAsyncHandler(int framerate, int width, int height, string codec_speed, int codec_type)
     {
-        rtp_server_  = new RTPServerWrapper(framerate, width, height);
+        rtp_server_  = new RTPServerWrapper(framerate, width, height, codec_speed, codec_type);
     }
 
     /// <summary>

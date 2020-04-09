@@ -17,9 +17,14 @@ extern "C" {
 namespace codec {
 namespace encoder {
 
-EncoderContext::EncoderContext(const int fps, const int width, const int height)
+EncoderContext::EncoderContext(const int fps, const int width, const int height, char *const codec_speed, const int codec_type)
 {
-  AVCodecID codec_id = AVCodecID::AV_CODEC_ID_H264;
+  AVCodecID codec_id;
+  switch (codec_id) {
+      case H264: codec_id = AVCodecID::AV_CODEC_ID_H264;
+      case H265: codec_id = AVCodecID::AV_CODEC_ID_H265;
+      default: codec_id = AVCodecID::AV_CODEC_ID_H264;
+  }
   codec_ptr_ = avcodec_find_encoder(codec_id);
   if (!codec_ptr_)
     throw std::runtime_error("Encoder codec not found");
@@ -36,7 +41,7 @@ EncoderContext::EncoderContext(const int fps, const int width, const int height)
   codec_context_ptr_->gop_size = 25;  // number of frames for 1 i-frame
   codec_context_ptr_->max_b_frames = 0;  // No B-Frames, which need future frames
   codec_context_ptr_->codec_type = AVMediaType::AVMEDIA_TYPE_VIDEO;
-  av_opt_set(codec_context_ptr_->priv_data, "preset", "ultrafast", 0);
+  av_opt_set(codec_context_ptr_->priv_data, "preset", codec_speed, 0);
 
   int success = avcodec_open2(codec_context_ptr_, codec_ptr_, nullptr);
   if (success < 0)

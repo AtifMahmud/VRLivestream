@@ -21,12 +21,15 @@ public class RTPServerWrapper {
     /// <param name="fps">The target fps of the stream</param>
     /// <param name="width">The width of each video frame, in pixels</param>
     /// <param name="height">The height of each video frame, in pixels</param>
-    public RTPServerWrapper(int fps, int width, int height)
+    /// <param name="codec_speed">slower speeds give better compression. more info at https://trac.ffmpeg.org/wiki/Encode/H.264</param>
+    /// <param name="codec_type">0 for H264, 1 for H265</param>
+    public RTPServerWrapper(int fps, int width, int height, string codec_speed, int codec_type)
     {
+        var codec_speed_builder = new StringBuilder(codec_speed);
         // Sometimes the creation of the server fails.
         // Try to create server up to a total of 3 times
         for (int i = 0; i < 3; ++i) {
-            rtp_server_ = CreateServer(fps, width, height, err_msg, ERR_SIZE);
+            rtp_server_ = CreateServer(fps, width, height, codec_speed_builder, codec_type, err_msg, ERR_SIZE);
             if (rtp_server_ != IntPtr.Zero)  break;
         }
 
@@ -94,6 +97,8 @@ public class RTPServerWrapper {
         int fps,
         int width,
         int height,
+        StringBuilder codec_speed,
+        int codec_type,
         StringBuilder err_msg,
         int err_msg_size);
 

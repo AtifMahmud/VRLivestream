@@ -27,6 +27,8 @@ extern "C" {
  * @param fps The desired fps of the stream
  * @param width The width of the image frames to encode
  * @param height The height of the image frames to encode
+ * @param codec_speed for example, "ultrafast", "medium". (https://trac.ffmpeg.org/wiki/Encode/H.264)
+ * @param codec_type select between h264 and h265. values can be found in frame_encoder.h
  * @param err_msg An output character array to hold an error message in the case of failure
  * @param err_msg_size The size of the output character array
  *
@@ -38,6 +40,8 @@ EXPORT codec::stream::RTPServer* CreateServer(
     int fps,
     int width,
     int height,
+    char* codec_speed,
+    int codec_type,
     char* err_msg,
     int err_msg_size);
 

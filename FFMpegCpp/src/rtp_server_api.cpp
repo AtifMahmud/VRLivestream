@@ -48,11 +48,13 @@ codec::stream::RTPServer* CreateServer(
     const int fps,
     const int width,
     const int height,
+    char *const codec_speed,
+    const int codec_type,
     char *const err_msg,
     const int err_msg_size)
 {
   try {
-    auto server = new codec::stream::RTPServer(fps, width, height);
+    auto server = new codec::stream::RTPServer(fps, width, height, codec_speed, codec_type);
     return server;
   } catch (const codec::CodecException &e) {
     CopyCString(err_msg, e.what(), err_msg_size);

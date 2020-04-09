@@ -32,8 +32,10 @@ class RTPServer {
    * @param fps The desired fps of the stream
    * @param width The width of raw image frames
    * @param height The height of raw image frames
+   * @param codec_speed for example, "ultrafast", "medium". (https://trac.ffmpeg.org/wiki/Encode/H.264)
+   * @param codec_type select between h264 and h265. values can be found in frame_encoder.h
    */
-  RTPServer(int fps, int width, int height);
+  RTPServer(int fps, int width, int height, char* codec_speed, int codec_type);
 
   /**
    * @brief Destroy the RTPServer object

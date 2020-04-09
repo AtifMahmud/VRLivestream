@@ -12,9 +12,9 @@
 namespace codec {
 namespace stream {
 
-RTPServer::RTPServer(const int fps, const int width, const int height)
+RTPServer::RTPServer(const int fps, const int width, const int height, char *const codec_speed, const int codec_type)
 {
-  encoder_ = std::make_unique<encoder::FrameEncoder>(fps, width, height);
+  encoder_ = std::make_unique<encoder::FrameEncoder>(fps, width, height, codec_speed, codec_type);
 }
 
 RTPServer::~RTPServer()

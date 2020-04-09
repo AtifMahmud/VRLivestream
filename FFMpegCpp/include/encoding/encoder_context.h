@@ -5,6 +5,10 @@
 
 #pragma once
 
+// different codec ids
+#define H264 0
+#define H265 1
+
 extern "C" {
 #include <libavcodec/avcodec.h>
 }
@@ -23,12 +27,14 @@ class EncoderContext {
    * @param fps The desired frames per second
    * @param width The width of each image frame
    * @param height The height of each image frame
+   * @param codec_speed for example, "ultrafast", "medium". (https://trac.ffmpeg.org/wiki/Encode/H.264)
+   * @param codec_type select between h264 and h265. values can be found in frame_encoder.h
    *
    * @throw std::runtime_error If the encoder codec was not found or if the
    *        underlying FFMpeg object could not be allocated
    * @throw CodecException If the codec could not be opened
    */
-  EncoderContext(int fps, int width, int height);
+  EncoderContext(int fps, int width, int height, char* codec_speed, int codec_type);
 
   // Delete the copy constructor and assignment operator
   EncoderContext(const EncoderContext&) = delete;

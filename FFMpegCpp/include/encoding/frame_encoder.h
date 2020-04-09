@@ -32,8 +32,10 @@ class FrameEncoder {
    * @param fps The desired fps
    * @param width The width of each image frame
    * @param height The height of each image frame
+   * @param codec_speed for example, "ultrafast", "medium". (https://trac.ffmpeg.org/wiki/Encode/H.264)
+   * @param codec_type select between h264 and h265. values can be found in frame_encoder.h
    */
-  FrameEncoder(int fps, int width, int height);
+  FrameEncoder(int fps, int width, int height, char* codec_speed, int codec_type);
 
   /**
    * @brief Destroy the FrameEncoder

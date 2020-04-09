@@ -43,7 +43,9 @@ public class ClientCamera : MonoBehaviour
         equirect_ = new RenderTexture(DIM, DIM, 24, RenderTextureFormat.ARGB32);
 
         // The encode task handles sending frames to the rtp stream in a semi-async fashion
-        stream_task_  = new Server.RTPStreamAsyncHandler(FRAMERATE, DIM, DIM);
+        // codec_type 0 => H264
+        // codec_type 1 => H265
+        stream_task_  = new Server.RTPStreamAsyncHandler(FRAMERATE, DIM, DIM, "ultrafast", /* codec type */ 0);
         if (stream_task_ == null)
             Debug.LogError("ERROR failed to create streaming task");
 
