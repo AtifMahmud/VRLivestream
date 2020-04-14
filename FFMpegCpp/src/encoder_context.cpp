@@ -42,6 +42,7 @@ EncoderContext::EncoderContext(const int fps, const int width, const int height,
   codec_context_ptr_->max_b_frames = 0;  // No B-Frames, which need future frames
   codec_context_ptr_->codec_type = AVMediaType::AVMEDIA_TYPE_VIDEO;
   av_opt_set(codec_context_ptr_->priv_data, "preset", codec_speed, 0);
+  av_opt_set(codec_context_ptr_->priv_data, "tune", "zerolatency", 0);
 
   int success = avcodec_open2(codec_context_ptr_, codec_ptr_, nullptr);
   if (success < 0)
