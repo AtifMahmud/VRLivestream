@@ -32,7 +32,7 @@ class DecodedFrameBuffer {
   DecodedFrameBuffer(
       int width, int height, AVPixelFormat pxl_fmt, uint8_t* buffer);
 
-  // Delete the copy constructor  and assignment operator
+  // Delete the copy constructor and assignment operator
   DecodedFrameBuffer(const DecodedFrameBuffer&) = delete;
   DecodedFrameBuffer operator=(const DecodedFrameBuffer&) = delete;
 

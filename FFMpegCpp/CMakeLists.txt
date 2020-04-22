@@ -31,7 +31,6 @@ elseif (UNIX)
 elseif(WIN32 OR WIN64)
   message(STATUS "Targeting Windows OS...")
 
-
 else()
   message( FATAL_ERROR "Could not detect target platform, Cmake will exit...")
 

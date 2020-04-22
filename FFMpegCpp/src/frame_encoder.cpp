@@ -5,10 +5,17 @@
 namespace codec {
 namespace encoder {
 
-FrameEncoder::FrameEncoder(const int fps, const int width, const int height, char *const codec_speed, const int codec_type)
+FrameEncoder::FrameEncoder(
+    const int fps,
+    const int width,
+    const int height,
+    char *const codec_speed,
+    const int codec_type)
     : height_(height)
 {
-  encoder_context_ = std::make_unique<EncoderContext>(fps, width, height, codec_speed, codec_type);
+  encoder_context_ = 
+      std::make_unique<EncoderContext>(
+          fps, width, height, codec_speed, codec_type);
 
   encoder_frame_ = std::make_unique<EncoderFrame>(
       encoder_context_->GetPixelFormat(), width, height);

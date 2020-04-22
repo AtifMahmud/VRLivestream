@@ -17,12 +17,12 @@ You will need to have the Android SDK installed. There are two options for this:
 You will need to install Google Cardboard SDK for Unity.
 
 1. Download the UnityPackage from [here](https://github.com/googlevr/gvr-unity-sdk/releases)
-1. In the UnityEditor, go to Assets->ImportPacket->CustomPackage... and find you downloaded package
+1. In the UnityEditor, go to Assets->ImportPacket->CustomPackage... and find your downloaded package
 
-Additionally, some project settings need to be changed. Note that most of these
-settings should already be set.
+Additionally, some project settings need to be changed. Note that all of these
+settings should already be set, but they're listed below as documentation:
 
-VR then needs to be enabled in the project:
+VR needs to be enabled in the project:
 
 1. Go to ProjectSettings->Player(AndroidIcon)->XRSettings
 1. Enbale VR for the project (check the "Virtual Reality Supported" box)
@@ -70,7 +70,7 @@ FpsDebugInfo.cs
 ## Other Notes
 
 The rtp streaming of the video is using ffmpeg shared-object files that are in the
-Assets/Plugins/ folders. These shared-objects are build using the FFMpegCPP
+Assets/Plugins/ folders. These shared-objects are built using the FFMpegCPP
 project. If you need to update the streaming code, you will have to rebuild the shared-objects
 and replace the ones in the Assets/Plugins/ folders. See the FFMpegCPP project
 for instructions.

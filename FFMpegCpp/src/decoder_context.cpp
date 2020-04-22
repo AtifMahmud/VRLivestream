@@ -1,3 +1,8 @@
+/**
+ * @file decoder_context.cpp
+ * @brief Implementation of the DecoderContext class
+ */
+
 #include "decoding/decoder_context.h"
 
 extern "C" {

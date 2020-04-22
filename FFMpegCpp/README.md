@@ -82,7 +82,7 @@ Exact steps may differ if using a different version
 Before you can target Android from your windows machine, you must have the following installed
 
  - CMake
-    - Cmake is a C/C++ tool for managing and building c/C++ projects
+    - Cmake is a C/C++ tool for managing and building C/C++ projects
     - You can download an installer from [here](https://cmake.org/download/)
     - Note: When installing, make sure to add CMake to your PATH variable
  - Android NDK

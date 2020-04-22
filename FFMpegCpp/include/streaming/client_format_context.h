@@ -62,18 +62,18 @@ class ClientFormatContext {
   /**
    * @brief Get the width of the image frames for the connected stream
    */
-  inline int Width()  { return width_; }
+  inline int Width() const { return width_; }
 
   /**
    * @brief Get the height of the image frames for the connected stream
    */
-  inline int Height() { return height_; }
+  inline int Height() const { return height_; }
 
   /**
    * @brief Get the id of the codec that was used to encode the video
    *        This will be needed in order to decode the video
    */
-  inline AVCodecID CodecID() { return codec_id_; }
+  inline AVCodecID CodecID() const { return codec_id_; }
 
  private:
   AVFormatContext* format_context_;

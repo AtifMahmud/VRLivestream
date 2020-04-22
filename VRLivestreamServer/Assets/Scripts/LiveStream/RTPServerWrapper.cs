@@ -39,7 +39,6 @@ public class RTPServerWrapper {
         }
     }
 
-
     /// <summary>
     /// Destroys the underlying C++ RTP server object
     /// </summary>
@@ -69,7 +68,7 @@ public class RTPServerWrapper {
     /// </summary>
     /// <param name="client_ip">The ip address of the client machine</param>
     /// <returns>
-    /// The SDP file as a string.false The sdp file hold the necessary
+    /// The SDP file as a string. The sdp file hold the necessary
     /// info for the client to connect to the stream
     /// </returns>
     public string AddClientToServer(string client_ip)

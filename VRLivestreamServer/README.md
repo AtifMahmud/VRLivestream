@@ -39,8 +39,10 @@ By creating a unitypackage, the streaming functionality can be easily integrated
 To use the unitypackage and start livestreaming in a new project:
 
 1. Select Assets->Import Package
-2. Select the unitypackage created in the previous step
-3. Attach the scripts ClientCamera.cs and ManualUIRenderer.cs to the camera you want to stream from
+1. Select the unitypackage created in the previous step
+1. Attach the scripts ClientCamera.cs and ManualUIRenderer.cs to the camera you want to stream from
+   Note that the ManualUIRenderer script is only necessary if your project contains Unity UI elements
+   that should be part of the livestream
 
 ## Other Notes:
 

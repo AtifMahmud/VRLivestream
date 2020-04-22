@@ -7,9 +7,7 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using System.Diagnostics;
 
-
-namespace FpsDebug
-{
+namespace FpsDebug {
 
 /// <summary>
 /// This script will display FPS in a little box in the

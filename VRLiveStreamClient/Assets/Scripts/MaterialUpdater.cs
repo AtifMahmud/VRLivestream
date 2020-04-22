@@ -42,7 +42,7 @@ public class MaterialUpdater : MonoBehaviour
             }
         }
 
-        // Mirror X axis so that it's the CORRECT way
+        // Mirror X axis, otherwise the client view will be mirrored compared to the server view
         m.mainTextureScale = new Vector2(-1, 1);
     }
 
