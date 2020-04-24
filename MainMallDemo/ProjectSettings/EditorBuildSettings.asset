@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/__Non-VR_TimeTest_6-Apr.unity
+    path: Assets/Scenes/TESTING/__Non-VR_TimeTest_6-Apr.unity
     guid: 18fe0e02ed9197e45b99e7ddb397be90
   - enabled: 1
     path: Assets/Scenes/SceneChangeTest.unity
